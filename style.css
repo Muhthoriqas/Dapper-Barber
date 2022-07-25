@@ -31,11 +31,6 @@ a:hover {
 .card {
   border-radius: 12px;
 }
-/*
-.img-fluid {
-  height: 520px;
-  max-width: 100%;
-} */
 #display-pass {
   display: none;
 }
@@ -59,9 +54,6 @@ a:hover {
   padding-bottom: 5px;
   padding-top: 5px;
 }
-/* .img-banner {
-  width: 500px;
-} */
 
 .text-orange {
   color: #b4846c;
@@ -78,10 +70,6 @@ a:hover {
   height: auto;
 }
 
-/* .bg-theme {
-  background-color: #f9f6ff;
-} */
-
 .border-radius-10 {
   border-radius: 15px;
 }
@@ -92,8 +80,6 @@ a:hover {
 
 .img-fluid {
   min-width: 70px;
-  /* min-height: 80px; */
-  /* max-height: 100%; */
 }
 
 @media (max-width: 576px) {

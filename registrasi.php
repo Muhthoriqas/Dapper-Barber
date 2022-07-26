@@ -1,3 +1,18 @@
+<?php
+require 'function.php';
+if (isset($_POST['register'])){
+  if(registrasi($_POST) >0){
+    echo "<script>
+    alert('Sucess Sign Up!')
+    </script>";
+    header("Location: login.php");
+    exit;
+  }else{
+    echo mysqli_error(($conn));
+  }
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -38,12 +53,12 @@
             <div class="card-body">
               <h4>Sign Up</h4>
               <p class="text-muted">Sign Up for the Best Haircut!</p>
-              <form action="" class="mt-4">
+              <form action="" class="mt-4" method="post">
                 <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Name" />
+                  <input type="text" class="form-control" name="username" id="username" placeholder="Name" required />
                 </div>
                 <div class="form-group mt-2">
-                  <input type="text" class="form-control" placeholder="Email" />
+                  <input type="text" class="form-control" id="email" name="email" placeholder="Email" required />
                 </div>
                 <div class="input-group mt-2">
                   <input
@@ -51,6 +66,8 @@
                     class="form-control"
                     placeholder="Password"
                     id="password"
+                    name="password"
+                    required
                   />
                   <div class="input-group-append">
                     <span class="input-group-text" onclick="displayPassword()">
@@ -65,6 +82,8 @@
                     class="form-control"
                     placeholder="Confirm Password"
                     id="passwordConfirm"
+                    name="password2"
+                    required
                   />
                   <div class="input-group-append">
                     <span
@@ -79,13 +98,14 @@
                 <div class="d-grid gap-2">
                   <button
                     class="btn btn-primary mt-2 btn-color-theme"
-                    type="button"
+                    type="submit"
+                    name="register"
                   >
                     Sign Up
                   </button>
                   <p class="text-center">
                     Already have an account?
-                    <a class="text-theme" href="/login.html">Sign In</a>
+                    <a class="text-theme" href="login.php">Sign In</a>
                   </p>
                   <!-- <p class="text-center">
                     Want to register your barber?

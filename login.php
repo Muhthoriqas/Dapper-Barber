@@ -1,3 +1,29 @@
+<?php
+require 'function.php';
+
+if( isset($_POST['login'])){
+  $username = $_POST['username'];
+  $password = $_POST['password'];
+
+  $result =mysqli_query($conn,"SELECT * FROM user WHERE username = '$username'");
+
+  if(mysqli_num_rows($result) === 1){
+    $row = mysqli_fetch_assoc($result);
+    if(password_verify($password,$row["password"])){
+      header("Location: index.html");
+      exit;
+    }else{
+      echo "<script>
+      alert('Password Wrong!')
+    </script>";
+    }
+  }else{
+    echo "<script>
+    alert('Username Invalid!, Plese Sign Up First!')
+  </script>";
+  }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -39,9 +65,9 @@
             <div class="card-body">
               <h4>Sign In</h4>
               <p class="text-muted">Get the Best Haircut Here!</p>
-              <form action="" class="mt-4">
+              <form action="" class="mt-4" method="post">
                 <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Email" />
+                  <input type="text" class="form-control" placeholder="Username" name="username" id="username" autocomplete="off" required/>
                 </div>
                 <div class="input-group mt-2">
                   <input
@@ -49,6 +75,9 @@
                     class="form-control"
                     placeholder="Password"
                     id="password"
+                    name="password"
+                    autocomplete="off"
+                    required
                   />
                   <div class="input-group-append">
                     <span class="input-group-text" onclick="displayPassword()">
@@ -63,12 +92,12 @@
                   </small>
                 </div>
                 <div class="d-grid gap-2">
-                  <button class="btn mt-2 btn-color-theme" type="button">
+                  <button class="btn mt-2 btn-color-theme" type="submit" name="login" id="login">
                     Sign In
                   </button>
                   <p class="text-center">
                     Don't have an account yet?
-                    <a class="text-theme" href="register.html">Sign Up</a>
+                    <a class="text-theme" href="registrasi.php">Sign Up</a>
                   </p>
                 </div>
               </form>

@@ -26,7 +26,7 @@ function registrasi($data){
   }
 
   $password = password_hash($password, PASSWORD_DEFAULT);
-  // var_dump($password); die;
+  var_dump($password); die;
 
   mysqli_query($conn, "INSERT INTO user VALUES('','$username','$email','$password')");
   return mysqli_affected_rows($conn);
